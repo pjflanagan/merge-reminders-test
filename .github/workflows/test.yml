@@ -17,7 +17,6 @@ jobs:
       - name: Configure Input Variables
         id: configure
         run: |
-          $INPUT_token=${{ secrets.GITHUB_TOKEN }}
           $INPUT_repository=${{ github.repository }}
           $INPUT_issue-number=${{ github.event.pull_request.number }}
           $INPUT_base-sha=${{ github.event.pull_request.base.sha }}
@@ -71,7 +70,7 @@ jobs:
         uses: peter-evans/create-or-update-comment@v4.0.0
         with:
           comment-id: ${{ steps.fc.outputs.comment-id }}
-          token: $INPUT_token
+          token: ${{ secrets.GITHUB_TOKEN }}
           repository: $INPUT_repository
           issue-number: $INPUT_issue-number
           edit-mode: replace
