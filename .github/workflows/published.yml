@@ -1,14 +1,19 @@
-name: Published Merge Comment Reminders
+name: PUBLISHED Merge Comment Reminders
 
 on:
   pull_request:
     types: [opened, edited, synchronize]
 
 jobs:
-  merge-comment-reminders-action:
+ published-merge-comment-reminders-action:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
       - name: Merge Comment Reminders
         uses: pjflanagan/merge-reminders@release-v0.0.1
         with:

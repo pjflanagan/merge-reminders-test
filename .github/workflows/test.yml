@@ -5,7 +5,7 @@ on:
     types: [opened, edited, synchronize]
 
 jobs:
-  merge-comment-reminders-action:
+  test-merge-comment-reminders-action:
     runs-on: ubuntu-latest
 
     steps:
