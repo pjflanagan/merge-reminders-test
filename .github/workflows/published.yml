@@ -14,6 +14,6 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           repository: ${{ github.repository }}
-          issue-number: ${{ github.event.pull_request.number }}
-          base-sha: ${{ github.event.pull_request.base.sha }}
-          head-sha: ${{ github.event.pull_request.head.sha }}
+          issueNumber: ${{ github.event.pull_request.number }}
+          baseSha: ${{ github.event.pull_request.base.sha }}
+          headSha: ${{ github.event.pull_request.head.sha }}
