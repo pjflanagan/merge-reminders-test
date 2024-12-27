@@ -5,7 +5,7 @@ on:
     types: [opened, edited, synchronize]
 
 jobs:
- published-merge-comment-reminders-action:
+  published-merge-comment-reminders-action:
     runs-on: ubuntu-latest
 
     steps:
@@ -17,4 +17,8 @@ jobs:
       - name: Merge Comment Reminders
         uses: pjflanagan/merge-reminders@release-v0.0.1
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          issue-number: ${{ github.event.pull_request.number }}
+          base-sha: ${{ github.event.pull_request.base.sha }}
+          head-sha: ${{ github.event.pull_request.head.sha }}

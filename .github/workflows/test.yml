@@ -14,11 +14,20 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Configure Input Variables
+        id: configure
+        run: |
+          $INPUT_token=${{ secrets.GITHUB_TOKEN }}
+          $INPUT_repository=${{ github.repository }}
+          $INPUT_issue-number=${{ github.event.pull_request.number }}
+          $INPUT_base-sha=${{ github.event.pull_request.base.sha }}
+          $INPUT_head-sha=${{ github.event.pull_request.head.sha }}
+
       - name: Find merge comments
         id: find-merge-comments
         run: |
           echo "Modified files:"
-          files=$(git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }})
+          files=$(git diff --name-only $INPUT_base-sha $INPUT_head-sha)
 
           if [ -n "$files" ]; then
             echo "$files"
@@ -54,19 +63,19 @@ jobs:
         uses: peter-evans/find-comment@v3
         id: fc
         with:
-          issue-number: ${{ github.event.pull_request.number }}
+          issue-number: $INPUT_issue-number
           comment-author: "github-actions[bot]"
-          body-includes: TEST Merge Reminders
+          body-includes: Merge Reminders
 
       - name: Update PR comment
         uses: peter-evans/create-or-update-comment@v4.0.0
         with:
           comment-id: ${{ steps.fc.outputs.comment-id }}
-          token: ${{ secrets.GITHUB_TOKEN }}
-          repository: ${{ github.repository }}
-          issue-number: ${{ github.event.pull_request.number }}
+          token: $INPUT_token
+          repository: $INPUT_repository
+          issue-number: $INPUT_issue-number
           edit-mode: replace
           body: |
-            **TEST Merge Reminders**
+            **Merge Reminders**
             ${{ steps.find-merge-comments.outputs.comments }}
           reactions: eyes
