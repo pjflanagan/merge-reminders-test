@@ -17,10 +17,10 @@ jobs:
       - name: Configure Input Variables
         id: configure
         run: |
-          $INPUT_repository=${{ github.repository }}
-          $INPUT_issue-number=${{ github.event.pull_request.number }}
-          $INPUT_base-sha=${{ github.event.pull_request.base.sha }}
-          $INPUT_head-sha=${{ github.event.pull_request.head.sha }}
+          $INPUT_repository="${{ github.repository }}"
+          $INPUT_issue-number="${{ github.event.pull_request.number }}"
+          $INPUT_base-sha="${{ github.event.pull_request.base.sha }}"
+          $INPUT_head-sha="${{ github.event.pull_request.head.sha }}"
 
       - name: Find merge comments
         id: find-merge-comments
