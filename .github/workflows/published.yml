@@ -1,4 +1,4 @@
-name: Merge Comment Reminders
+name: Published Merge Comment Reminders
 
 on:
   pull_request:

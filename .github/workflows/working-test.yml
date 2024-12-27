@@ -1,4 +1,4 @@
-name: Merge Comment Reminders
+name: TEST Merge Comment Reminders
 
 on:
   pull_request:
@@ -56,7 +56,7 @@ jobs:
         with:
           issue-number: ${{ github.event.pull_request.number }}
           comment-author: "github-actions[bot]"
-          body-includes: TEST: Merge Reminders
+          body-includes: TEST Merge Reminders
 
       - name: Update PR comment
         uses: peter-evans/create-or-update-comment@v4.0.0
@@ -67,6 +67,6 @@ jobs:
           issue-number: ${{ github.event.pull_request.number }}
           edit-mode: replace
           body: |
-            **TEST: Merge Reminders**
+            **TEST Merge Reminders**
             ${{ steps.find-merge-comments.outputs.comments }}
           reactions: eyes
