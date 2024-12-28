@@ -1,0 +1,13 @@
+name: PUBLISHED Merge Comment Reminders
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize]
+
+jobs:
+  published-merge-comment-reminders-action:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Merge Comment Reminders
+        uses: pjflanagan/merge-reminders@main

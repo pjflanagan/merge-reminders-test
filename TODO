@@ -1,0 +1,2 @@
+- [ ] Install the checkbox requirement so that we can see that it blocks merge
+- [ ] Precommit hook that updates the timestamp on all of the examples to force updates
