@@ -9,5 +9,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Merge Comment Reminders
+      - name: Custom Merge Comment Reminders
         uses: pjflanagan/merge-reminders@customization
+        with:
+          flag: '@merge:'
+          title: '@merge Custom Flag'
