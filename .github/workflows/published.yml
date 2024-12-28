@@ -11,9 +11,3 @@ jobs:
     steps:
       - name: Merge Comment Reminders
         uses: pjflanagan/merge-reminders@release-v0.0.1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          repository: ${{ github.repository }}
-          issueNumber: ${{ github.event.pull_request.number }}
-          baseSha: ${{ github.event.pull_request.base.sha }}
-          headSha: ${{ github.event.pull_request.head.sha }}
